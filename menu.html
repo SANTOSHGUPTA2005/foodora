@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+    <!-- Search Bar with Logo -->
+    <div class="search-container">
+        <img src="images/logo.png" alt="Logo" class="logo"> <!-- Replace with your logo URL -->
+        <input type="text" id="search" placeholder="Search menu items...">
+    </div>
+    
+    <div class="container">
+        <div class="menu">
+            <div class="menu-item" data-name="Pizza" data-price="12">
+                <img src="https://www.bigbasket.com/media/uploads/recipe/w-l/594_1.jpg" alt="Pizza">
+                <h3>Pizza</h3>
+                <p>$12.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="menu-item" data-name="Burger" data-price="8">
+                <img src="https://www.bigbasket.com/media/uploads/recipe/w-l/594_1.jpg" alt="Burger">
+                <h3>Burger</h3>
+                <p>$8.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="menu-item" data-name="Pasta" data-price="10">
+                <img src="https://www.bigbasket.com/media/uploads/recipe/w-l/594_1.jpg" alt="Pasta">
+                <h3>Pasta</h3>
+                <p>$10.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="menu-item" data-name="Salad" data-price="5">
+                <img src="https://www.bigbasket.com/media/uploads/recipe/w-l/594_1.jpg" alt="Salad">
+                <h3>Salad</h3>
+                <p>$5.00</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="cart">
+            <h2>Cart</h2>
+            <div id="cart-items"></div>
+            <h3>Total: <span id="total">$0.00</span></h3>
+            <button id="checkout">Proceed to Checkout</button>
+        </div>
+    </div>
+   
+    
+    
+    <script src="menu.js"></script>
+</body>
+</html>

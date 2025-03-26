@@ -45,6 +45,14 @@
     </div>
 
     <script>
+        
+
+
+
+  
+
+
+        
         document.getElementById('bookTableForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -77,7 +85,7 @@
             formData.append('phone', phone);
 
             // Send data to Google Sheets
-            fetch('https://script.google.com/macros/s/AKfycbyBfBT6WEUsKt2VkIDKcBDGCH9UaIDq4aZMVoE1yoRQocrx8LMN7jWz4AU3gCTDGmjz4Q/exec', { // Replace with your actual script URL
+            fetch('https://script.google.com/macros/s/AKfycbwr2lWxGwL-kzAyPprlK44IukGFeW_gZBbTh-V-JS59SIurX9CB_bEXqsSWWTun7Zc6Pw/exec', { // Replace with your actual script URL
                 method: 'POST',
                 body: formData
             })
