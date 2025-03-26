@@ -37,14 +37,21 @@
     </style>
 </head>
 <body>
+    
 
     <div class="container">
         <h2 class="text-center">My Bookings</h2>
         <div id="bookingList"></div>
         <p id="noBookings" class="text-center text-muted">No bookings available.</p>
     </div>
+    
 
     <script>
+        // Check if the user is logged in
+if (!localStorage.getItem("user")) {
+    window.location.href = "login.html"; // Redirect to login page 
+}
+
         // Function to display bookings from localStorage
         function displayBookings() {
             let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
@@ -98,7 +105,7 @@
 
         // Function to send cancellation details to Google Apps Script
         function sendCancellationToGoogleScript(booking) {
-            const scriptURL = "https://script.google.com/macros/s/AKfycbzW_BVEhAjj1W4_Z9f3I8T64K8LUgy5EScoKSaVIJ7Mwg1rU5fk01IAwe78un05Ug7BoA/exec"; // Replace with your Google Apps Script URL
+            const scriptURL = "https://script.google.com/macros/s/AKfycbwQrzK8mkti3zy8A-FoZ4bt93te3E9E2HNqtVLtN-QbbLln-ijEEuormdDrn0OY6q4kDw/exec"; // Replace with your Google Apps Script URL
 
             const formData = new FormData();
             formData.append('action', 'cancel');

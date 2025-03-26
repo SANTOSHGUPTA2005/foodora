@@ -1,3 +1,6 @@
+if (!localStorage.getItem("user")) {
+    window.location.href = "login.html"; // Redirect to login page 
+}
 document.addEventListener("DOMContentLoaded", () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const orderSummary = document.getElementById("orderSummary");
@@ -7,19 +10,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (cart.length === 0) {
         orderSummary.innerHTML = "<p>Your cart is empty.</p>";
-        finalTotal.innerText = "Total: $0.00";
+        finalTotal.innerText = "Total: ₹0.00";
         return;
     }
 
     let total = 0;
     cart.forEach(item => {
         const li = document.createElement("li");
-        li.innerText = `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`;
+        li.innerText = `${item.name} (x${item.quantity}) - ₹${(item.price * item.quantity).toFixed(2)}`;
         orderSummary.appendChild(li);
         total += item.price * item.quantity;
     });
 
-    finalTotal.innerText = `Total: $${total.toFixed(2)}`;
+    finalTotal.innerText = `Total: ₹${total.toFixed(2)}`;
 
     // ✅ Order Submission
     document.getElementById("orderForm").addEventListener("submit", (event) => {
@@ -46,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(response => {
                 console.log("Telegram Response:", response);
-                alert(`Order placed successfully!\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nTotal: $${total.toFixed(2)}`);
+                alert(`Order placed successfully!\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nTotal: ₹${total.toFixed(2)}`);
 
                 localStorage.removeItem("cart");
                 window.location.href = "index.html"; // Redirect to homepage
@@ -60,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /** ✅ Function to Send Order to Google Apps Script */
 function sendOrderToGAS(name, phone, address, cart, total) {
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwr2lWxGwL-kzAyPprlK44IukGFeW_gZBbTh-V-JS59SIurX9CB_bEXqsSWWTun7Zc6Pw/exec"; // ✅ Your GAS Web App URL
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwQrzK8mkti3zy8A-FoZ4bt93te3E9E2HNqtVLtN-QbbLln-ijEEuormdDrn0OY6q4kDw/exec"; // ✅ Your GAS Web App URL
 
     const formData = new FormData();
     formData.append("action", "order");
@@ -85,10 +88,10 @@ function formatOrderMessage(name, phone, address, cart, total) {
                   `📌 *Order Summary:*\n`;
 
     cart.forEach(item => {
-        message += `🍽️ ${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}\n`;
+        message += `🍽️ ${item.name} (x${item.quantity}) - ₹${(item.price * item.quantity).toFixed(2)}\n`;
     });
 
-    message += `\n💰 *Total:* $${total.toFixed(2)}`;
+    message += `\n💰 *Total:* ₹${total.toFixed(2)}`;
 
     return message;
 }

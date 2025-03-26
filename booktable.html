@@ -18,12 +18,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#explore-food">Explore Food</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#testimonal">Reviews</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-                        <li><button class="main-btn">Contact Us</button></li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="menu.html">Explore Food</a>
+                          </li>
+                        
+                          <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">Sign Up/Out</a>
+                          </li>
+                          <li><button class="main-btn" onclick="window.location.href='about.html';">Contact Us</button></li>
                     </ul>
                 </div>
             </div>
@@ -50,7 +58,10 @@
 
 
   
-
+         // Check if the user is logged in
+if (!localStorage.getItem("user")) {
+    window.location.href = "login.html"; // Redirect to login page 
+}
 
         
         document.getElementById('bookTableForm').addEventListener('submit', function(event) {
@@ -85,7 +96,7 @@
             formData.append('phone', phone);
 
             // Send data to Google Sheets
-            fetch('https://script.google.com/macros/s/AKfycbwr2lWxGwL-kzAyPprlK44IukGFeW_gZBbTh-V-JS59SIurX9CB_bEXqsSWWTun7Zc6Pw/exec', { // Replace with your actual script URL
+            fetch('https://script.google.com/macros/s/AKfycbwQrzK8mkti3zy8A-FoZ4bt93te3E9E2HNqtVLtN-QbbLln-ijEEuormdDrn0OY6q4kDw/exec', { // Replace with your actual script URL
                 method: 'POST',
                 body: formData
             })
